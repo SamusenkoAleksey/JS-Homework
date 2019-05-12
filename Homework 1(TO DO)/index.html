@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS - Homework 1</title>
+</head>
+<body>
+
+
+<script>
+
+ var rows = parseInt(prompt("Enter a number of rows")),
+     columns = parseInt(prompt("Enter a number of columns")),
+     x = 0,
+     y = 0,
+     snakeLimit = rows * columns;
+
+    if(rows >= 2 && columns >= 2){
+
+      //create an array
+      var matrix = [];
+
+      for (let i = 0; i < rows; i++) {
+        matrix.push(new Array(columns));
+      };
+
+
+      //fill in an array with zeroes
+
+      for(let i = 0;i < rows;i ++){
+        for(let k = 0; k < columns ;k++){
+          matrix[i][k] = 0;
+        };
+      };
+
+
+      //go though the array
+      for(let i = 1; i < snakeLimit ;i++){
+
+        //go right
+        if((matrix[x][y + 1] === 0 && y <= columns) || (matrix[x][y + 1] === undefined && y <= columns)){
+
+
+
+          if(y === columns){
+            matrix[x][y] = i;
+            console.log(y);
+          }else{
+            matrix[x][y] = i;
+            y++;
+          }
+
+
+
+
+          // console.log(matrix[x + 2][y - 1] = 2);
+
+        };
+
+
+
+      };
+
+
+      // console.log(matrix[0][9]);
+
+
+
+
+      showArr(matrix);
+    };
+
+
+
+
+
+
+
+
+
+  function showArr (arrayName) {
+
+    for(let i = 0 ; i < arrayName.length; i++){
+      let str = "row #" + (i + 1) + "||";
+      //go vertically
+      for(let k = 0; k < arrayName[i].length ;k++){
+        str +=  " " + arrayName[i][k];
+      };
+      console.log(str);
+    };
+  };
+
+  // function goRight(array, x, y) {
+  //
+  //   for(let i = 1 ; i <= columns;i++){
+  //     if(array[x][y + 1] === 0 || array[x][y + 1] !== 0){
+  //       array[x][y] = i;
+  //       y++;
+  //     };
+  //   };
+  //
+  //
+  // };
+  //
+  // function goDown(array, x, y) {
+  //   for(let i = 1 ; i < rows;i++){
+  //     if(array[x + 1][y] === 0 || (x <= rows && array[x + 1][y] === undefined)){
+  //       array[x][y] = i;
+  //       x++;
+  //       console.log(rows);
+  //     };
+  //   };
+  // }
+
+
+</script>
+</body>
+</html>

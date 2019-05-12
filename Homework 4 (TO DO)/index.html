@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    #myFirstCanvas
+    {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myFirstCanvas" width="600" height="600"></canvas>
+  
+
+  <script type="text/javascript">
+
+
+    // creaeting canvas field
+    var canvasField = document.getElementById("myFirstCanvas");
+    
+    
+    var GeometricFigure = class GeometricFigure
+    {
+      constructor(type, height, width, color, number){
+        this.type = type;
+        this.height = this.width = height;
+        this.color = color;
+        this.square = type === "rectangle" ? Math.pow(height, 2) : Math.PI * Math.pow(height, 2);
+        this.number = number;
+        this.context = canvasField.getContext('2d');
+        this.x = 0;
+        this.y = 0;
+      }
+
+      draw () {
+        if(this.type === "rectangle"){
+
+          this.context.rect(this.x,this.y,this.height,this.width);
+          this.context.fillStyle = this.color;
+          this.context.fill();
+
+        }else if(this.type === "circle"){
+
+          this.radius = (this.height / 2);
+          this.centerX = this.centerY = this.radius;
+          this.context.beginPath();
+          this.context.arc(this.centerX, this.centerY, this.radius, 0, 2 * Math.PI, false);
+          this.context.fillStyle = this.color;
+          this.context.fill();
+          this.context.lineWidth = 0;
+          this.context.strokeStyle = this.color;
+          this.context.stroke();
+        }
+        
+      }
+
+      getConsole (){
+        console.log("Type " + this.type + "\n" + "Color " + this.color + "\n" + "Square " + Math.round(this.square));
+        
+      }
+
+      moveIt (){
+      // to write coude here
+      }
+
+    };
+
+
+    // var test = new GeometricFigure(getRandomTypeOfGeometricFigure(), getRandomNumber(30, 75), getRandomNumber(30, 75), getRgbRandomColor(), 1);
+
+    let timerId = setInterval(createNewFigure, 5000);
+
+    setTimeout(() => { clearInterval(timerId); }, 100000);
+
+    // for(let i = 1; i <= 20;i++){
+    //   var test = new GeometricFigure(getRandomTypeOfGeometricFigure(), getRandomNumber(30, 75), getRandomNumber(30, 75), getRgbRandomColor(), i);
+    //   test.draw();
+    //   test.getConsole();
+    //   test.moveIt();
+    // }
+    
+
+    function getRandomNumber (minValue, maxValue) {
+
+      let output = Math.round(Math.random() * maxValue);
+
+
+      if(maxValue === 0 || maxValue === undefined){
+        throw new Error("maxValue is missing!");
+      };
+
+      if(output >= minValue){
+        return output;
+      }else{
+        return minValue;
+      };
+      
+    }
+
+    function getRgbRandomColor () {
+        return "rgb" + "(" + getRandomNumber(0,255) + "," + getRandomNumber(0,255) + "," + getRandomNumber(0,255) + ")" ;
+    }
+
+    function getRandomTypeOfGeometricFigure () {
+      if(getRandomNumber(0,1) == true){
+        return "circle";
+      }else{
+        return "rectangle";
+      }
+    }
+
+    function createNewFigure (){
+      var figure = new GeometricFigure(getRandomTypeOfGeometricFigure(), getRandomNumber(30, 75), getRandomNumber(30, 75), getRgbRandomColor());
+          figure.draw();
+          figure.getConsole();
+    }
+
+
+  </script>
+
+
+</body>
+</html>
