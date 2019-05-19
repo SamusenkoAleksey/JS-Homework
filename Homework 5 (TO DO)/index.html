@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS_Homework_5</title>
+  
+</head>
+<body>
+  
+  <script type="text/javascript">
+
+      
+    
+      //creating Car as a class
+      var Car = class Car
+      {
+        constructor(id, brand, model, producingYear, color, price, registerNumber){
+          this.id = id;
+          this.brand = brand;
+          this.producingYear = producingYear;
+          this.color = color;
+          this.price = price;
+          this.registerNumber = registerNumber;
+        }
+      }
+
+      //creating car objects
+      var car1 = new Car(1, "BMW", "X5", 2016, "Black", "80000 USD", "HD231I"),
+          car2 = new Car(2, "Toyota", "Corola", 2002, "Green", "20000 USD","OP761I"),
+          car3 = new Car(3, "Honda", "T3", 1998, "White",  "10000 USD", "LM-76DI"),
+          car4 = new Car(4, "BMW", "X5", 2002, "Brown",  "15000 USD", "HB-23DI"),
+          car5 = new Car(5, "BMW", "X6", 2019, "RED",  "80000 USD", "OP-90JK"),
+          car6 = new Car(6, "Honda", "M3", 2010, "Yellow", "30000 USD","620-KMP"),
+          car7 = new Car(7, "Toyota", "Corola", 2015, "Green", "40000 USD","SFIR76I")
+
+      
+      //creating an arrya with the objects above
+      var arraOfObjectts = [];
+
+      //adding cars to the array
+      arraOfObjectts.push(car1, car2, car3, car4, car5, car6, car7);
+
+     
+
+      getCarsByBrand(arraOfObjectts, "Toyota");
+
+
+      function getCarsByBrand(arrayOfCars, brandName) {
+
+        for(let key in arraOfObjectts){
+
+          if(arraOfObjectts[key].brand === brandName){
+            console.log(arraOfObjectts[key]);
+          };
+        }
+
+
+        // console.log(arrayOfCars);
+      }
+
+
+
+  </script>
+
+
+</body>
+</html>
