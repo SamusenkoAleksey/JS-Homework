@@ -15,6 +15,7 @@
       {
         constructor(id, brand, model, producingYear, color, price, registerNumber){
           this.id = id;
+          this.model = model;
           this.brand = brand;
           this.producingYear = producingYear;
           this.color = color;
@@ -41,20 +42,39 @@
 
      
 
-      getCarsByBrand(arraOfObjectts, "Toyota");
+      // getCarsByBrand(arraOfObjectts, "BMW");
+
+      getCarsByModelAndYear(arraOfObjectts,"X5",20)
 
 
       function getCarsByBrand(arrayOfCars, brandName) {
 
         for(let key in arraOfObjectts){
 
-          if(arraOfObjectts[key].brand === brandName){
-            console.log(arraOfObjectts[key]);
+          if(arrayOfCars[key].brand === brandName){
+            console.log(arrayOfCars[key]);
           };
         }
 
+      }
 
-        // console.log(arrayOfCars);
+      function getCarsByModelAndYear(arrayOfCars,model, RequestedbeingUsedYears) {
+
+        for(let key in arraOfObjectts){
+          //getting cars by model
+          if(arrayOfCars[key].model === model){
+            //getting cars by a number of years they are being used
+            if(typeof RequestedbeingUsedYears === "number"){
+
+              let currentYear = new Date().getFullYear(),
+                  beingUsedYear = currentYear - arrayOfCars[key].producingYear;
+
+                  if(RequestedbeingUsedYears > beingUsedYear){
+                    console.log(arrayOfCars[key]);
+                  };    
+            };
+          };
+        };
       }
 
 
