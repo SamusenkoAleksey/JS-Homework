@@ -30,8 +30,8 @@
           car3 = new Car(3, "Honda", "T3", 1998, "White",  "10000 USD", "LM-76DI"),
           car4 = new Car(4, "BMW", "X5", 2002, "Brown",  "15000 USD", "HB-23DI"),
           car5 = new Car(5, "BMW", "X6", 2019, "RED",  "80000 USD", "OP-90JK"),
-          car6 = new Car(6, "Honda", "M3", 2010, "Yellow", "30000 USD","620-KMP"),
-          car7 = new Car(7, "Toyota", "Corola", 2015, "Green", "40000 USD","SFIR76I")
+          car6 = new Car(6, "Honda", "T3", 2010, "Yellow", "30000 USD","620-KMP"),
+          car7 = new Car(7, "Toyota", "Corola", 2019, "Green", "40000 USD","SFIR76I")
 
       
       //creating an arrya with the objects above
@@ -42,13 +42,13 @@
 
      
 
-      // getCarsByBrand(arraOfObjectts, "BMW");
-
-      getCarsByModelAndYear(arraOfObjectts,"X5",20)
+      getCarsByBrand(arraOfObjectts, "BMW");
+      getCarsByModelAndYear(arraOfObjectts,"T3",20)
+      getCarsByProducingYearAndPrice(arraOfObjectts, 2019, "1000 USD");
 
 
       function getCarsByBrand(arrayOfCars, brandName) {
-
+        console.log("  getCarsByBrand function:");
         for(let key in arraOfObjectts){
 
           if(arrayOfCars[key].brand === brandName){
@@ -58,9 +58,9 @@
 
       }
 
-      function getCarsByModelAndYear(arrayOfCars,model, RequestedbeingUsedYears) {
-
-        for(let key in arraOfObjectts){
+      function getCarsByModelAndYear(arrayOfCars, model, RequestedbeingUsedYears) {
+          console.log("  getCarsByModelAndYear function:")
+        for(let key in arrayOfCars){
           //getting cars by model
           if(arrayOfCars[key].model === model){
             //getting cars by a number of years they are being used
@@ -77,6 +77,20 @@
         };
       }
 
+      function getCarsByProducingYearAndPrice (arrayOfCars, requestedProducingYear, reuquestedPrice){
+        console.log("  getCarsByProducingYearAndPrice function:");
+        for(let key in arrayOfCars){
+          if(arrayOfCars[key].producingYear === requestedProducingYear){
+            //getting prices as numbers
+            let price = parseInt(arrayOfCars[key].price.slice(0,-4)),
+                neededPrice = parseInt(reuquestedPrice.slice(0,-4));
+
+                if(neededPrice < price){
+                  console.log(arrayOfCars[key]);
+                }
+          }
+        }
+      }
 
 
   </script>
