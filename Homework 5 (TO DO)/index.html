@@ -31,8 +31,22 @@
           car4 = new Car(4, "BMW", "X5", 2002, "Brown",  "15000 USD", "HB-23DI"),
           car5 = new Car(5, "BMW", "X6", 2019, "RED",  "80000 USD", "OP-90JK"),
           car6 = new Car(6, "Honda", "T3", 2010, "Yellow", "30000 USD","620-KMP"),
-          car7 = new Car(7, "Toyota", "Corola", 2019, "Green", "40000 USD","SFIR76I")
+          car7 = new Car(7, "Toyota", "Corola", 2019, "Green", "40000 USD","SFIR76I");
 
+
+      try {
+
+        if(typeof car1.id !== "number"){
+          throw new SyntaxError("Ошибка в данных");
+        }
+
+      } catch(e) {
+        if(e.name == "SyntaxError"){
+          console.log( "Sorry, there is an error" );
+        }else{
+          throw e;
+        }
+      }
       
       //creating an arrya with the objects above
       var arraOfObjectts = [];
@@ -42,9 +56,9 @@
 
      
 
-      getCarsByBrand(arraOfObjectts, "BMW");
-      getCarsByModelAndYear(arraOfObjectts,"T3",20)
-      getCarsByProducingYearAndPrice(arraOfObjectts, 2019, "1000 USD");
+      // getCarsByBrand(arraOfObjectts, "BMW");
+      // getCarsByModelAndYear(arraOfObjectts,"T3",20)
+      // getCarsByProducingYearAndPrice(arraOfObjectts, 2019, "1000 USD");
 
 
       function getCarsByBrand(arrayOfCars, brandName) {
