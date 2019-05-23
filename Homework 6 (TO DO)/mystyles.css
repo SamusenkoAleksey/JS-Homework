@@ -1,0 +1,11 @@
+#main
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.grid_cells
+{
+  width: 350px;
+}
