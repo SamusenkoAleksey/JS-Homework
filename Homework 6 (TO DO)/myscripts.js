@@ -10,6 +10,7 @@ var Pizza = class Pizza
     this.price = price;
     this.imgSrc = imgSrc;
     this.priceCurrency = priceCurrency;
+    this.symbol = "img/pizza_symbol.svg";
   }
 }
 
@@ -31,7 +32,7 @@ var pizaCarbonara = new Pizza("Карбонара", "Бекон, пармеза�
 
   var listButton = document.getElementById("button_get_list"),
       gridButton = document.getElementById("button_get_grid"),
-      mainDiv = document.getElementById("main");
+      mainDiv = document.getElementById("main"); 
 
 //to see if "showPizzasInGrid" was already run
 
@@ -44,7 +45,7 @@ listButton.addEventListener("click", showPizzasInList,false);
 
 function showPizzasInGrid() {
   if(isShowPizzasInGridRun === true){
-        // removePizzas(mainDiv);
+        removePizzas("grid_cells");
         return;
       }
   //going trough "mainArray" and create html cells
@@ -99,7 +100,6 @@ function createInfoList(){
            text = document.createTextNode(arguments[i + 1]);
             li.appendChild(text);
             ul.appendChild(li);
-
       }
 
       arguments[0].appendChild(ul);
@@ -107,19 +107,47 @@ function createInfoList(){
       // console.log(arguments[2]);
 }
 
-// function removePizzas(div){
-//   // var itemsToBeRemoved = document.getElementsByClassName(className);
-  
-//   for(let i = 0; i < div.children.length + 3;i++){
-//     // itemsToBeRemoved[i].remove();
-//     div.children[i].remove();
-//   }
+function removePizzas(nameClass){
 
-  
+  let cells = document.getElementsByClassName(nameClass);
 
-// }
+   for(let i = cells.length - 1; i >= 0;i--){
+    
+    cells[i].remove();
+
+  }  
+    isShowPizzasInGridRun = false;
+
+ 
+
+}
 
 
 function showPizzasInList(argument) {
+  if(isShowPizzasInGridRun === true){
+        removePizzas("list_cells");
+        return;
+      }
+
+  let listDiv = document.createElement("div");
+      listDiv.setAttribute("id", "sub_div");
+  let ulElement = document.createElement("ul");
+
+      mainDiv.appendChild(listDiv);
+      listDiv.appendChild(ulElement);
+
+      //going trough "mainArray" and create html cells
+  for(let i = 0 ; i < mainArray.length ;i++){
+      let li = document.createElement("li"),
+          text = document.createTextNode(mainArray[i].name + ", " + mainArray[i].price + " " + mainArray[i].priceCurrency + ", " +  mainArray[i].calories + " калорий");
+      li.appendChild(text);
+      li.setAttribute("class", "list_cells")
+      ulElement.appendChild(li);
   
+  }
+
+  
+
+isShowPizzasInGridRun = true;
+
 }

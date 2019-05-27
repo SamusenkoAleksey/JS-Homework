@@ -9,3 +9,22 @@
 {
   width: 350px;
 }
+
+#sub_div ul
+{
+  list-style: none;
+  padding: 0;
+}
+
+#sub_div ul li
+{
+  padding-left: 1.3em;
+}
+
+#sub_div ul li:before 
+{
+  content: url(img/pizza_symbol.svg);
+  display: inline-block;
+  margin-left: -1em; 
+  width: 1.3em;
+  }
