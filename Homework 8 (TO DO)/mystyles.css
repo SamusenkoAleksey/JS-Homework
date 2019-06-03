@@ -1,0 +1,72 @@
+body
+{
+  font-size: 100%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#main
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+nav
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.grid_cells
+{
+  width: 350px;
+  text-align: center;
+  border: solid black 0.06em;
+  border-radius: 1em;
+  margin: 1em;
+  padding-top: 1em;
+  box-shadow: 17px 20px 23px -6px rgba(0,0,0,0.75);
+}
+
+.grid_cells  ul 
+{
+  text-align: left;
+  list-style: none;
+}
+
+.buttons
+{
+  font-size: 1em;
+  background: red;
+  color: white;
+  padding: 1em;
+  border-radius: 1em;
+  border-style: none;
+  position: relative;
+  bottom: 0.7em;
+}
+
+.buttons:hover
+{
+  cursor: pointer;
+}
+
+#sub_div ul
+{
+  list-style: none;
+  padding: 0;
+}
+
+#sub_div ul li
+{
+  padding-left: 1.3em;
+}
+
+#sub_div ul li:before 
+{
+  content: url(img/pizza_symbol.svg);
+  display: inline-block;
+  margin-left: -1em; 
+  width: 1.3em;
+  }
